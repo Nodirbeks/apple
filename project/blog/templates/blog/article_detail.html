@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+
+<div class="container d-flex justify-content-between p-5 ">
+    <div class="col-7">
+        <div class="card border-dark">
+            <div class="card-header d-flex justify-content-between border-dark">
+                <div class="d-flex align-items-center">
+                    <b>Категория: {{ article.category }}</b>
+                </div>
+                <div>
+                    <a href="{% url 'index' %}" class="btn btn-warning">Назад</a>
+                    <a href="{% url 'delete' article.id %}" class="btn btn-danger">Удалить</a>
+                    <a href="" class="btn btn-success">Изменить</a>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <img class="card-img-top" src="{{ article.get_photo }}" alt="">
+                <h3 class="card-title text-center">
+                    {{ article.title }}
+                </h3>
+                <p class="card-text">
+                    {{ article.content|linebreaks }}
+                </p>
+            </div>
+            <div class="card-footer d-flex justify-content-between border-dark">
+                <div>
+                    <b>Дата опубликования: {{ article.updated_at }}</b>
+                </div>
+                <div>
+                    <b>Просмотры: {{ article.views }}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        {% for article in articles %}
+        <div class="mb-3 mt-3">
+            {% include 'blog/components/_cards.html' %}
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock main %}

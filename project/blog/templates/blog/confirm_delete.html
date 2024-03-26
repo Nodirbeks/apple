@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container d-flex justify-content-center">
+    <div class="col-6 m-4 card p-4">
+        <form class="d-flex justify-content-between" method="post" action="">
+            {% csrf_token %}
+            <h5>Вы точно хотите удалить "{{ article.title }}"</h5>
+            <br>
+            <input class="btn btn-danger btn-lg" type="submit" value="Да, удалить!">
+            <a href="{% url 'article' article.id %}" class="btn btn-warning btn-lg">Назад</a>
+        </form>
+
+    </div>
+
+</div>
+
+
+
+{% endblock main %}

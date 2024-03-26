@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block main %}
+<div class="container d-flex justify-content-center p-4">
+    <div class="col-4">
+        <header>
+            <h3 class="text-center">
+                {{ title }}
+            </h3>
+        </header>
+
+        <div class="card-body">
+            <form action="" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-success" type="submit">Зарегистрироваться!</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Уже есть аккаунта?
+                        <a class="navbar-brand" href="{% url 'register' %}" style="color: red;">
+                            Зарегистрироваться!
+                        </a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
